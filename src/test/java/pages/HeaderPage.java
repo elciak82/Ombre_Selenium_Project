@@ -13,10 +13,10 @@ public class HeaderPage extends GenericPage{
     @FindBy (css = "[href=\"/cart\"]")
     WebElement cartIcon;
 
-    public void openCartPage(){
+    public CartPage openCartPage(){
         GenericPage genericPage = new GenericPage(driver);
         genericPage.fluentWaitForElementDisplayed(cartIcon);
         cartIcon.click();
-//        return new CartPage(driver);
+        return new CartPage(driver);
     }
 }

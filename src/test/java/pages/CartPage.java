@@ -27,6 +27,7 @@ public class CartPage extends GenericPage{
     @FindBy (css = "thead th")
     List<WebElement> productHeaders;
 
+
     public enum PRODUCTS_IN_CART_HEADERS{
         ID,	NAME, PRICE, QUANTITY, TOTAL
     }
@@ -102,8 +103,7 @@ public class CartPage extends GenericPage{
                 allProductsFromCartMap.add(productsFromCartMap);
             }
         }
-
-        System.out.println(allProductsFromCartMap);
+//        System.out.println(allProductsFromCartMap);
         return allProductsFromCartMap;
     }
 }

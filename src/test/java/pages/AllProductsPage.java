@@ -29,18 +29,17 @@ public class AllProductsPage extends GenericPage{
         return new ProductPage(driver);
     }
 
-    public CartPage addProductToCart(int productIndex){
+    public void addProductToCart(int productIndex){
         addToCart.get(productIndex).click();
-        return new CartPage(driver);
     }
 
     public String getProductPrice(int productIndex){
-        System.out.println(productPrice.get(productIndex).getText());
+//        System.out.println(productPrice.get(productIndex).getText());
         return productPrice.get(productIndex).getText();
     }
 
     public String getProductName(int productIndex){
-        System.out.println(productName.get(productIndex).getText());
+//        System.out.println(productName.get(productIndex).getText());
         return productName.get(productIndex).getText();
     }
 }
