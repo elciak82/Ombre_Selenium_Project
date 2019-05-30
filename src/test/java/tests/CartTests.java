@@ -13,7 +13,6 @@ import java.util.Map;
 
 import static helpers.Configuration.getConfiguration;
 import static helpers.Driver.initializeWebDriver;
-import static org.junit.Assert.assertEquals;
 
 public class CartTests {
     public static final int PRODUCT_INDEX = 0;
