@@ -6,22 +6,29 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage extends GenericPage{
-    ProductPage(WebDriver driver) {
+    public ProductPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "add to cart")
+    @FindBy(css = "[title='add to cart']")
     WebElement addToCart;
 
-    @FindBy(className = "price")
+    @FindBy(css = "[class='price'] span")
     WebElement price;
+
+    @FindBy(className = "name")
+    WebElement name;
 
     public void addProductToCart(){
         addToCart.click();
     }
 
-    public String getPrice(){
+    public String getProductPrice(){
         return price.getText();
+    }
+
+    public String getProductName(){
+        return name.getText();
     }
 }

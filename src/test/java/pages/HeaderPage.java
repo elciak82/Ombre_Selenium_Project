@@ -10,7 +10,7 @@ public class HeaderPage extends GenericPage{
         super(driver);
         PageFactory.initElements(driver, this);
     }
-    @FindBy (css = "[href=\"/cart\"]")
+    @FindBy (css = "[href='/cart']")
     WebElement cartIcon;
 
     public CartPage openCartPage(){

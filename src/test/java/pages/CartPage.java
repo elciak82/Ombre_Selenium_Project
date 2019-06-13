@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,10 +31,9 @@ public class CartPage extends GenericPage{
         ID,	NAME, PRICE, QUANTITY, TOTAL
     }
 
-    private List<List<String>> getAllProductsFromCartList(){ //nie da się zrobic listy z tych elementów
-        List<WebElement> webElementsProductsInCartRows = new ArrayList<>();
+    private List<List<String>> getAllProductsFromCartList(){
+        List<WebElement> webElementsProductsInCartRows = new ArrayList<>(driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")));
         List<List<String>> stringsProductsInCart = new ArrayList<>();
-        webElementsProductsInCartRows.addAll(driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")));
 
         for (WebElement row: webElementsProductsInCartRows){
             List<String> stringProductInCart = new ArrayList<>();
@@ -61,14 +59,9 @@ public class CartPage extends GenericPage{
         return driver.findElement(By.cssSelector(elementCss));
     }
 
-    public Map<Integer, Map<PRODUCTS_IN_CART_HEADERS, String>> getAllProductsFromCartMap(){
+    public Map<Integer, Map<PRODUCTS_IN_CART_HEADERS, String>> getAllProductsFromCartMap_DRAFT(){
         Map<Integer, Map<PRODUCTS_IN_CART_HEADERS, String>> allProductsFromCartMap = new HashMap<>();
-
-//        List<String> headersList = new ArrayList<>();
         List<List<String>> productDataList = getAllProductsFromCartList();
-
-//        headersList.addAll(getAllProductsFromCartList(productHeaders));
-//        productDataList.addAll(getAllProductsFromCartList(productData));
 
         if (productDataList.size() > 0) {
             for (int i = 0; i < productDataList.size(); i++) {
@@ -85,11 +78,9 @@ public class CartPage extends GenericPage{
         return allProductsFromCartMap;
     }
 
-    public List<Map<PRODUCTS_IN_CART_HEADERS, String>> getAllProductsFromCartMap2(){
+    public List<Map<PRODUCTS_IN_CART_HEADERS, String>> getAllProductsFromCartMap(){
         List<Map<PRODUCTS_IN_CART_HEADERS, String>> allProductsFromCartMap = new ArrayList<>();
-
-        List<WebElement> webElementsProductsInCartRows = new ArrayList<>();
-        webElementsProductsInCartRows.addAll(driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")));
+        List<WebElement> webElementsProductsInCartRows = new ArrayList<>(driver.findElement(By.tagName("tbody")).findElements(By.tagName("tr")));
 
         for (WebElement row: webElementsProductsInCartRows){
             Map<PRODUCTS_IN_CART_HEADERS, String> productsFromCartMap = new HashMap<>();

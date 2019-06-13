@@ -15,13 +15,13 @@ public class AllProductsPage extends GenericPage{
     @FindBy(className = "product")
     List<WebElement> products;
 
-    @FindBy(css = "[title=\"add to cart\"]")
+    @FindBy(css = "[title='add to cart']")
     List<WebElement> addToCart;
 
     @FindBy(className = "name")
     List<WebElement> productName;
 
-    @FindBy(css = "[class=\"price\"] span")
+    @FindBy(css = "[class='price'] span")
     List<WebElement> productPrice;
 
     public ProductPage selectProduct(int productIndex){
@@ -29,8 +29,9 @@ public class AllProductsPage extends GenericPage{
         return new ProductPage(driver);
     }
 
-    public void addProductToCart(int productIndex){
+    public AllProductsPage addProductToCart(int productIndex){
         addToCart.get(productIndex).click();
+        return new AllProductsPage(driver);
     }
 
     public String getProductPrice(int productIndex){
@@ -41,5 +42,11 @@ public class AllProductsPage extends GenericPage{
     public String getProductName(int productIndex){
 //        System.out.println(productName.get(productIndex).getText());
         return productName.get(productIndex).getText();
+    }
+
+    public void addProductsToCart(int numberOfProducts, int productIndex){
+        for (int i=0; i<numberOfProducts; i++) {
+            addProductToCart(productIndex);
+        }
     }
 }
